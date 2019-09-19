@@ -140,7 +140,7 @@ if [[ $(stat -c %U /var/vmail/_garbage) != "vmail" ]] ; then chown -R vmail:vmai
 if [[ $(stat -c %U /var/attachments) != "vmail" ]] ; then chown -R vmail:vmail /var/attachments ; fi
 
 # Cleanup random user maildirs
-rm -rf /var/vmail/mailcow.local/*
+rm -rf /var/vmail/openemail.io/*
 
 
 # Create random master for SOGo sieve features
