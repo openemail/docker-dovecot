@@ -147,9 +147,9 @@ rm -rf /var/vmail/mailcow.local/*
 RAND_USER=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1)
 RAND_PASS=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 24 | head -n 1)
 
-echo ${RAND_USER}@mailcow.local:{SHA1}$(echo -n ${RAND_PASS} | sha1sum | awk '{print $1}') > /etc/dovecot/dovecot-master.passwd
-echo ${RAND_USER}@mailcow.local::5000:5000:::: > /etc/dovecot/dovecot-master.userdb
-echo ${RAND_USER}@mailcow.local:${RAND_PASS} > /etc/sogo/sieve.creds
+echo ${RAND_USER}@openemail.io:{SHA1}$(echo -n ${RAND_PASS} | sha1sum | awk '{print $1}') > /etc/dovecot/dovecot-master.passwd
+echo ${RAND_USER}@openemail.io::5000:5000:::: > /etc/dovecot/dovecot-master.userdb
+echo ${RAND_USER}@openemail.io:${RAND_PASS} > /etc/sogo/sieve.creds
 
 if [[ -z ${MAILDIR_SUB} ]]; then
   MAILDIR_SUB_SHARED=
