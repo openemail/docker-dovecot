@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 LABEL maintainer "Chinthaka Deshapriya <chinthaka@cybergate.lk>"
 
 ARG DEBIAN_FRONTEND=noninteractive
@@ -69,19 +69,16 @@ RUN groupadd -g 5000 vmail \
   libunicode-string-perl \
   liburi-perl \
   libwww-perl \
-  mysql-client \
+  mariadb-client \
   procps \
-  python-html2text \
-  python-jinja2 \
-  python-mysql.connector \
-  python-redis \
+  python3-pip \
   redis-server \
   supervisor \
   syslog-ng \
   syslog-ng-core \
   syslog-ng-mod-redis \
   && apt-key adv --fetch-keys https://repo.dovecot.org/DOVECOT-REPO-GPG \
-  && echo 'deb https://repo.dovecot.org/ce-2.3-latest/debian/stretch stretch main' > /etc/apt/sources.list.d/dovecot.list \
+  && echo 'deb https://repo.dovecot.org/ce-2.3-latest/debian/buster buster main' > /etc/apt/sources.list.d/dovecot.list \
   && apt-get update \
   && apt-get -y --no-install-recommends install \
   dovecot-lua \
@@ -94,10 +91,11 @@ RUN groupadd -g 5000 vmail \
   dovecot-pop3d \
   dovecot-imapd \
   dovecot-solr \
+  && pip3 install mysql-connector-python html2text jinja2 redis \
   && apt-get autoremove --purge -y \
   && apt-get autoclean \
   && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /tmp/* /var/tmp/* /etc/cron.daily/*
+  && rm -rf /tmp/* /var/tmp/* /etc/cron.daily/* /root/.cache/
 
 COPY trim_logs.sh /usr/local/bin/trim_logs.sh
 COPY clean_q_aged.sh /usr/local/bin/clean_q_aged.sh
