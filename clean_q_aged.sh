@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MAX_AGE=$(redis-cli --raw -h redis-mailcow GET Q_MAX_AGE)
+MAX_AGE=$(redis-cli --raw -h redis-openemail GET Q_MAX_AGE)
 
 if [[ -z ${MAX_AGE} ]]; then
   echo "Max age for quarantine items not defined"
