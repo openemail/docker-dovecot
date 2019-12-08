@@ -1,5 +1,5 @@
 FROM debian:buster-slim
-LABEL maintainer "Chinthaka Deshapriya <chinthaka@cybergate.lk>"
+LABEL maintainer "Amila Kothalawala <amila@openemail.io>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL C
