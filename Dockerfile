@@ -1,5 +1,5 @@
 FROM debian:buster-slim
-LABEL maintainer "Amila Kothalawala <amila@openemail.io>"
+LABEL maintainer "Amila Kothalawala  <amila@openemail.io>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL C
@@ -69,6 +69,7 @@ RUN groupadd -g 5000 vmail \
   libunicode-string-perl \
   liburi-perl \
   libwww-perl \
+  lua-sql-mysql \
   mariadb-client \
   procps \
   python3-pip \
